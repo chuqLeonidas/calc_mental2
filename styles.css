@@ -1,0 +1,105 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #C5E0DC;
+    padding: 10px;
+    color: rgb(15, 11, 11);
+}
+
+button {
+
+    margin-top: 10px;
+    padding: 10px 25px;
+    font-size: 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result button {
+    margin-top: 15px;
+    padding: 10px 22px;
+    font-size: 20px;
+    border: none;
+    background-color: rgb(48, 73, 202);
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.result button:hover {
+    background-color: rgb(18, 29, 85);
+}
+
+
+.settings-btn {
+    width: 60px;              /* ajusta al tamaño de tu imagen */
+    height: 40px;
+    background: url('config_button.png') no-repeat center;
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.settings-btn:hover {
+    background-color: #e2e2e2;
+
+}
+
+h1{
+    font-size: 70px;
+    font-weight: bold;
+}
+h2{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 0%;
+}
+
+
+.buttons div {
+    width: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.number-display{
+    font-size: 180px;
+    color: #007bff;
+    transition: opacity 0.5s, transform 0.5s; /* Animación de transición */
+}
+
+.number-display img {
+      height: 200px;
+    }
+
+.config {
+    text-align: right;
+}
+
+.return {
+    text-align: left;
+}
+
+.return button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    font-size: 20px;
+    border: none;
+    background-color: #9c9c9c;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
