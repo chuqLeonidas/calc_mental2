@@ -1,4 +1,16 @@
-const interval = 7000;
+const rutasImagenes = [
+  "img/vaca-1.png",
+  "img/vaca-2.png",
+  "img/vaca-3.png",
+  "img/cerdo-1.png",
+  "img/cerdo-2.png",
+  "img/cerdo-3.png",
+  "img/oveja-1.png",
+  "img/oveja-2.png",
+  "img/oveja-3.png"
+];
+
+const interval = 10000;
 
 const animales = ['vaca', 'cerdo', 'oveja'];
 const cantidades = [1, 2, 3];
@@ -70,7 +82,16 @@ function showGrouping() {
   } else {
     clearInterval(myInterval);
     running = false;
-    resultsBttn.disabled = false;
+    setTimeout(() => {
+      display.style.opacity = 0;
+      display.style.transform = 'scale(0.5)';
+      setTimeout(() => {
+        display.innerHTML = `<h2>El resultado es: <br><br><br></h2>`;
+        display.style.opacity = 1;
+        display.style.transform = 'scale(1)';
+        resultsBttn.disabled = false;
+      }, 500);
+    }, interval);
   }
 }
 
@@ -84,7 +105,6 @@ function start() {
   startBttn.disabled   = true;
   restartBttn.disabled = false;
   resultsBttn.disabled = true;
-  resultText.textContent = 'Resultado:';
 
   agrupaciones = generateGroupings();
   varI    = 0;
@@ -100,17 +120,45 @@ function restart() {
     running = false;
   }
   display.innerHTML      = '';
-  resultText.textContent = 'Resultado:';
-  startBttn.disabled     = false;
-  restartBttn.disabled   = true;
-  resultsBttn.disabled   = true;
   const img = document.createElement('img');
   img.src = 'img/dice.png';
   display.appendChild(img);
+
+  startBttn.disabled     = false;
+  restartBttn.disabled   = true;
+  resultsBttn.disabled   = true;
 }
 
 function showResults() {
-  resultText.textContent = 
-    `Resultado: ${totalAnimales.vaca} vacas, ${totalAnimales.cerdo} cerdos, ${totalAnimales.oveja} ovejas`;
+  display.innerHTML = `<h2>
+    El resultado es: <br>
+    ${totalAnimales.vaca} Vaquitas <br>
+    ${totalAnimales.cerdo} Chanchitos <br>
+    ${totalAnimales.oveja} Ovejitas <br>
+  </h2>`;
   resultsBttn.disabled = true;
+}
+
+
+window.onload = function () {
+  preloadImages(rutasImagenes)
+    .then(() => {
+      console.log("Todas las imágenes están precargadas");
+    })
+    .catch((error) => {
+      console.error("Error al cargar las imágenes:", error);
+    });
+};
+
+function preloadImages(rutas) {
+  const promesas = rutas.map(src => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = resolve;
+      img.onerror = reject;
+    });
+  });
+
+  return Promise.all(promesas);
 }

@@ -76,7 +76,6 @@ h2{
 
 .number-display{
     font-size: 180px;
-    color: #007bff;
     transition: opacity 0.5s, transform 0.5s; /* Animación de transición */
 }
 

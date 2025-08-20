@@ -1,9 +1,23 @@
-//var waitTime = 10000;
+const rutasImagenes = [
+  "img/0.png",
+  "img/1.png",
+  "img/2.png",
+  "img/3.png",
+  "img/4.png",
+  "img/5.png",
+  "img/6.png",
+  "img/7.png",
+  "img/8.png",
+  "img/9.png",
+  "img/mas.png",
+  "img/menos.png"
+];
+
 var interval = 3000;
 
-var min = 2;
+var min = 3;
 
-var maxim = 13;
+var maxim = 20;
 
 var running = false;
 var myInterval;
@@ -109,10 +123,20 @@ function showNumbers() {
     } else {
 
         clearInterval(myInterval);
-
-        resultsBttn.disabled = false;
         
+        setTimeout(() => {
+            display.style.opacity = 0;
+            display.style.transform = 'scale(0.5)';
+            setTimeout(() => {
+                display.innerHTML = `<h2>El resultado es: <br> <br></h2>`;
+                display.style.opacity = 1;
+                display.style.transform = 'scale(1)';
+                resultsBttn.disabled = false;
+            }, 500);
+        }, interval);
         console.log("resultado finallll:" + result)
+
+        
     }
 
 }
@@ -145,16 +169,16 @@ function start() {
 }
 
 function restart() {
-    
+    console.log("se reinicia")
     if (running) {
         clearInterval(myInterval);
         running = false; 
     }
 
     display.innerHTML = ''; // Limpiar el contenido anterior
-    showImage("dice");
-    resultText.textContent = "Resultado: ";
-    display.style.color = "#007bff";  // Volver al color normal
+    const img = document.createElement('img');
+    img.src = 'img/dice.png';
+    display.appendChild(img);
     
     startBttn.disabled = false;
     restartBttn.disabled = true;
@@ -171,7 +195,9 @@ function showResults(){
     */
 
     setTimeout(() => {
-        resultText.textContent = "Resultado: " + result; // Mostrar el número actual
+        display.innerHTML = `<h2>
+        El resultado es: ${result} <br> <br>
+        </h2>`; // Mostrar el número actual
 /*
 
         display.style.color = "#003267";  // Cambiar color del resultado
@@ -200,4 +226,29 @@ function showImage(name){
     img.src = `img/${name}.png`;
     img.alt = name;
     display.appendChild(img);
+}
+
+
+
+window.onload = function () {
+  preloadImages(rutasImagenes)
+    .then(() => {
+      console.log("Todas las imágenes están precargadas");
+    })
+    .catch((error) => {
+      console.error("Error al cargar las imágenes:", error);
+    });
+};
+
+function preloadImages(rutas) {
+  const promesas = rutas.map(src => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = resolve;
+      img.onerror = reject;
+    });
+  });
+
+  return Promise.all(promesas);
 }
