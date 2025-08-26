@@ -17,7 +17,7 @@ var interval = 3000;
 
 var min = 3;
 
-var maxim = 32;
+var maxim = 40;
 
 var running = false;
 var myInterval;
@@ -253,3 +253,4 @@ function preloadImages(rutas) {
   return Promise.all(promesas);
 
 }
+
