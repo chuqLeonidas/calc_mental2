@@ -10,7 +10,7 @@ const rutasImagenes = [
   "img/oveja-3.png"
 ];
 
-const interval = 7500;
+const interval = 7000;
 
 const animales = ['vaca', 'cerdo', 'oveja'];
 const cantidades = [1, 2, 3];
@@ -163,4 +163,5 @@ function preloadImages(rutas) {
   return Promise.all(promesas);
 
 }
+
 
