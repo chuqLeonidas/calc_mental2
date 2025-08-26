@@ -31,7 +31,7 @@ function generateGroupings() {
   totalAnimales = { vaca: 0, cerdo: 0, oveja: 0 };
   const groups = [];
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     const usados = new Set();
     const grupo = [];
     const cantidadDeGrupos = Math.floor(Math.random() * 2) + 1; 
@@ -161,4 +161,5 @@ function preloadImages(rutas) {
   });
 
   return Promise.all(promesas);
+
 }
