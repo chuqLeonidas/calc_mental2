@@ -38,7 +38,7 @@ let boolSign; // Variable que indica si se va a mostrar el signo o no
 function generateNumbers(){
     let numbers = [];
     let resultado = 0;
-    for (let i = 0; i < 6; i++){
+    for (let i = 0; i < 7; i++){
         let number = Math.floor(Math.random() * (maxim - min)) + min;
         if (i === 0)
             numbers.push(number);
@@ -253,4 +253,5 @@ function preloadImages(rutas) {
   return Promise.all(promesas);
 
 }
+
 
